@@ -1,7 +1,12 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
-var friends = require("./app/data/friends.js");
+var _ = require("lodash");
+
+
+// var friends = require("./app/data/friends.js");
+var appHtml = require("./app/routing/htmlroutes.js");
+var appApi = require("./app/routing/apiRoutes.js")
 
 
 var app = express();
@@ -18,30 +23,9 @@ app.get("/", function(req, res){
 	res.sendFile(path.join(__dirname, "/app/public/home.html"));
 });
 
-app.get("/survey", function(req, res){
-	res.sendFile(path.join(__dirname, "/app/public/survey.html"));
-});
+appHtml(app);
 
-
-
-app.get("/api/friends", function(req, res){
-	res.sendFile(path.join(__dirname, "/app/data/friends.js"));
-	return res.json(friends.friends)
-});
-
-
-app.post("/api/friends", function(req, res){
-	var userData = req.body;
-
-	friends.friends.push(userData);
-	res.json(true);
-});
-
-
-
-
-
-app.use('/', express.static('app', {index: "home.html"}));	
+appApi(app);
 
 
 

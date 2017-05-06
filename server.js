@@ -4,13 +4,13 @@ var path = require("path");
 var _ = require("lodash");
 
 
-// var friends = require("./app/data/friends.js");
+var friends = require("./app/data/friends.js");
 var appHtml = require("./app/routing/htmlroutes.js");
 var appApi = require("./app/routing/apiRoutes.js")
 
 
 var app = express();
-var PORT = 3000;
+app.set('port', (process.env.PORT || 3000));
 
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.json());
@@ -30,6 +30,6 @@ appApi(app);
 
 
 
-app.listen(PORT, function() {
-  console.log("App listening on PORT " + PORT);
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
 });

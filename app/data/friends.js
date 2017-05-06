@@ -1,6 +1,6 @@
-exports.friends = [{
-	"name":"Ahmed",
-  "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+var friends = [{
+	"name":"Abe",
+  "photo":"http://i2.kym-cdn.com/photos/images/original/000/954/162/20d",
   "scores":[
       5,
       1,
@@ -42,3 +42,4 @@ exports.friends = [{
       2
     ]}]
 
+module.exports = friends;
